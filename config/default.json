@@ -1,3 +1,6 @@
 {
-  "mongoURI": "mongodb+srv://cmodi10:cmodi10@devconnecte-tut-hf7wc.mongodb.net/test?retryWrites=true&w=majority"
+  "mongoURI": "mongodb+srv://cmodi10:cmodi10@devconnecte-tut-hf7wc.mongodb.net/test?retryWrites=true&w=majority",
+  "jwtSecret": "mysecrettoken",
+  "githubClientId": "4e4bec0adf05729a342a",
+  "githubSecret": "2b7a83f49f1211cce555312ff44bdd99ba851aa0"
 }

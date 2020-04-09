@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+// model uses object to create a schema and uses mongoose to interact with mongodb
 const UserSchema = new mongoose.Schema({
   name: {
     type: String,

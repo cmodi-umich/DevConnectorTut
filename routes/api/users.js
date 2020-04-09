@@ -13,6 +13,7 @@ const User = require("../../models/User");
 // @desc     Register user
 // @access   Public
 router.post(
+  // create a new user
   "/",
   [
     check("name", "Name is required").not().isEmpty(),
@@ -21,14 +22,14 @@ router.post(
       "password",
       "Please enter a password with 6 or more characters"
     ).isLength({ min: 6 }),
-  ],
+  ], // validate the json request
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { name, email, password } = req.body;
+    const { name, email, password } = req.body; // object destructuring
 
     try {
       let user = await User.findOne({ email });
@@ -55,7 +56,7 @@ router.post(
         password,
       });
 
-      const salt = await bcrypt.genSalt(10);
+      const salt = await bcrypt.genSalt(10); // salt the pw
 
       user.password = await bcrypt.hash(password, salt);
 
@@ -68,6 +69,7 @@ router.post(
       };
 
       jwt.sign(
+        // create the jwt
         payload,
         config.get("jwtSecret"),
         { expiresIn: 360000 },
